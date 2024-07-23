@@ -12,10 +12,10 @@ let port = process.env.PORT || 8090;
 
 // ejs setup
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "view"));
-app.use(express.static("public"))
-
+app.use(express.static("public"));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 

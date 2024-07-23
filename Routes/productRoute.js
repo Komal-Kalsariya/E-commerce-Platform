@@ -1,8 +1,14 @@
 const { Router } = require('express')
-const { ProductForm } = require('../controllers/Prodcut.controller')
+const { ProductForm, createProduct, getProducts, MacBook } = require('../controllers/Prodcut.controller')
+const upload = require('../middlewares/uploadImage')
 
 const productRoute = Router()
 
-productRoute.get('/productForm',ProductForm)
+productRoute.get('/create', ProductForm)
+productRoute.post("/", upload.single("img"), createProduct)
 
-module.exports =productRoute
+
+productRoute.get("/", getProducts)
+productRoute.get("/macbook", MacBook)
+
+module.exports = productRoute
